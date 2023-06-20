@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.mapLatest
 @FlowPreview
 @ExperimentalCoroutinesApi
 class MainViewModel : ViewModel() {
-    private val accessToken = "pk.eyJ1IjoieXVtdGF1ZmlraGlkYXlhdCIsImEiOiJjbGoya3FzbnMxZHlvM2lyMWxxc3Nma2RhIn0.3bzpbPlJYsc4omEf5q_DlQ"
+    private val accessToken = "ENTER_YOUR_ACCESS_TOKEN_HERE"
     val queryChannel = MutableStateFlow("")
 
     val searchResult = queryChannel
