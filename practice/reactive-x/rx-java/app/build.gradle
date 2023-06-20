@@ -50,7 +50,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
     // ReactiveX
-    // ReactiveX libs
     def rxJavaVersion = '2.2.19'
     def rxBindingVersion = '2.0.0'
     implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
