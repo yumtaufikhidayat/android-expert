@@ -1,26 +1,22 @@
-package com.yumtaufikhidayat.myapplication
+package com.yumtaufikhidayat.myapplication.ui
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.yumtaufikhidayat.myapplication.UserRepository
 import com.yumtaufikhidayat.myapplication.databinding.ActivityHomeBinding
+import org.koin.android.ext.android.inject
 
 class HomeActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityHomeBinding.inflate(layoutInflater) }
-    private var userRepository: UserRepository? = null
+    private val userRepository: UserRepository by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        initSession()
         initView()
-    }
-
-    private fun initSession() {
-        val session = SessionManager(this)
-        userRepository = UserRepository.getInstance(session)
     }
 
     private fun initView() {
