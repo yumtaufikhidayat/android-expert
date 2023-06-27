@@ -3,17 +3,16 @@ package com.yumtaufikhidayat.tourismappkoin.detail
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.ViewModelProvider
 import com.yumtaufikhidayat.tourismappflow.R
 import com.yumtaufikhidayat.tourismappflow.databinding.ActivityDetailTourismBinding
 import com.yumtaufikhidayat.tourismappkoin.core.domain.model.Tourism
-import com.yumtaufikhidayat.tourismappkoin.core.ui.ViewModelFactory
 import com.yumtaufikhidayat.tourismappkoin.core.utils.loadImage
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailTourismActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityDetailTourismBinding.inflate(layoutInflater) }
-    private var detailTourismViewModel: DetailTourismViewModel? = null
+    private val detailTourismViewModel: DetailTourismViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,17 +20,11 @@ class DetailTourismActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
         getBundleData()
-        initViewModel()
     }
 
     private fun getBundleData() {
         val detailTourism = intent.getParcelableExtra<Tourism>(EXTRA_DATA)
         showDetailTourism(detailTourism)
-    }
-
-    private fun initViewModel() {
-        val factory = ViewModelFactory.getInstance(this)
-        detailTourismViewModel = ViewModelProvider(this, factory)[DetailTourismViewModel::class.java]
     }
 
     private fun showDetailTourism(detailTourism: Tourism?) {

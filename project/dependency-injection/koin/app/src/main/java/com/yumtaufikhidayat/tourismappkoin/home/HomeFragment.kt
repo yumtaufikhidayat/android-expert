@@ -6,20 +6,19 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.yumtaufikhidayat.tourismappflow.R
 import com.yumtaufikhidayat.tourismappflow.databinding.FragmentHomeBinding
 import com.yumtaufikhidayat.tourismappkoin.core.data.Resource
 import com.yumtaufikhidayat.tourismappkoin.core.ui.TourismAdapter
-import com.yumtaufikhidayat.tourismappkoin.core.ui.ViewModelFactory
 import com.yumtaufikhidayat.tourismappkoin.core.utils.navigateToDetail
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
-    private var homeViewModel: HomeViewModel? = null
+    private val homeViewModel: HomeViewModel by viewModel()
     private val tourismAdapter by lazy { TourismAdapter { navigateToDetail(it) } }
 
     override fun onCreateView(
@@ -35,7 +34,6 @@ class HomeFragment : Fragment() {
 
         if (activity != null) {
             setHomeAdapter()
-            setViewModel()
             setData()
         }
     }
@@ -48,13 +46,8 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun setViewModel() {
-        val factory = ViewModelFactory.getInstance(requireActivity())
-        homeViewModel = ViewModelProvider(this, factory)[HomeViewModel::class.java]
-    }
-
     private fun setData() {
-        homeViewModel?.tourism?.observe(viewLifecycleOwner) {
+        homeViewModel.tourism.observe(viewLifecycleOwner) {
             binding.apply {
                 if (it != null) {
                     when (it) {
