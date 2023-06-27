@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace 'com.yumtaufikhidayat.tourismappkoin'
+    namespace 'com.yumtaufikhidayat.tourismappflow'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.yumtaufikhidayat.tourismappkoin"
+        applicationId "com.yumtaufikhidayat.tourismappflow"
         minSdk 26
         targetSdk 33
         versionCode 1
@@ -77,10 +77,4 @@ dependencies {
     // LiveData
     def lifecycleVersion = '2.6.1'
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
-
-    // Koin
-    def koinVersion = '2.1.6'
-    implementation "org.koin:koin-core:$koinVersion"
-    implementation "org.koin:koin-android:$koinVersion"
-    implementation "org.koin:koin-android-viewmodel:$koinVersion"
 }
