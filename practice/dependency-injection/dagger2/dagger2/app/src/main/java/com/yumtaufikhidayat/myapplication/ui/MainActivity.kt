@@ -15,10 +15,16 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var userRepository: UserRepository
 
+    @Inject
+    lateinit var userRepository2: UserRepository
+
     override fun onCreate(savedInstanceState: Bundle?) {
         (application as MyApplication).appComponent.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        userRepository.checkInstance()
+        userRepository2.checkInstance()
 
         getUserSession()
         binding.btnLogin.setOnClickListener {
