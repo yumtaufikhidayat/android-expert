@@ -1,17 +1,12 @@
 package com.yumtaufikhidayat.myapplication.di
 
+import android.content.Context
 import com.yumtaufikhidayat.myapplication.SessionManager
-import com.yumtaufikhidayat.myapplication.UserRepository
-import org.koin.dsl.module
+import dagger.Module
+import dagger.Provides
 
-object StorageModule {
-    val storageModule = module {
-        factory {
-            SessionManager(get())
-        }
-
-        factory {
-            UserRepository(get())
-        }
-    }
+@Module
+class StorageModule {
+    @Provides
+    fun provideSessionManager(context: Context): SessionManager = SessionManager(context)
 }

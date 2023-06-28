@@ -1,6 +1,10 @@
 package com.yumtaufikhidayat.myapplication
 
-class UserRepository(private val session: SessionManager) {
+import javax.inject.Inject
+import javax.inject.Singleton
+
+@Singleton
+class UserRepository @Inject constructor(private val session: SessionManager) {
 
     fun loginUser(username: String) = session.apply {
         createLoginSession()
