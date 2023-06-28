@@ -1,26 +1,39 @@
 package com.yumtaufikhidayat.tourismappflow.home
 
+import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.yumtaufikhidayat.tourismappflow.MyApplication
 import com.yumtaufikhidayat.tourismappflow.R
 import com.yumtaufikhidayat.tourismappflow.core.data.Resource
 import com.yumtaufikhidayat.tourismappflow.core.ui.TourismAdapter
 import com.yumtaufikhidayat.tourismappflow.core.ui.ViewModelFactory
 import com.yumtaufikhidayat.tourismappflow.core.utils.navigateToDetail
 import com.yumtaufikhidayat.tourismappflow.databinding.FragmentHomeBinding
+import javax.inject.Inject
 
 class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
-    private var homeViewModel: HomeViewModel? = null
     private val tourismAdapter by lazy { TourismAdapter { navigateToDetail(it) } }
+
+    @Inject
+    lateinit var factory: ViewModelFactory
+
+    private val homeViewModel: HomeViewModel by viewModels {
+        factory
+    }
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        (requireActivity().application as MyApplication).appComponent.inject(this)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,7 +48,6 @@ class HomeFragment : Fragment() {
 
         if (activity != null) {
             setHomeAdapter()
-            setViewModel()
             setData()
         }
     }
@@ -48,13 +60,8 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun setViewModel() {
-        val factory = ViewModelFactory.getInstance(requireActivity())
-        homeViewModel = ViewModelProvider(this, factory)[HomeViewModel::class.java]
-    }
-
     private fun setData() {
-        homeViewModel?.tourism?.observe(viewLifecycleOwner) {
+        homeViewModel.tourism.observe(viewLifecycleOwner) {
             binding.apply {
                 if (it != null) {
                     when (it) {

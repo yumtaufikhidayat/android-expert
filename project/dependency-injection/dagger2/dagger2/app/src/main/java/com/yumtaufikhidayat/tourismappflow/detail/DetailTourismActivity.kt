@@ -1,37 +1,40 @@
 package com.yumtaufikhidayat.tourismappflow.detail
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.ViewModelProvider
+import com.yumtaufikhidayat.tourismappflow.MyApplication
 import com.yumtaufikhidayat.tourismappflow.R
 import com.yumtaufikhidayat.tourismappflow.core.domain.model.Tourism
 import com.yumtaufikhidayat.tourismappflow.core.ui.ViewModelFactory
 import com.yumtaufikhidayat.tourismappflow.core.utils.loadImage
 import com.yumtaufikhidayat.tourismappflow.databinding.ActivityDetailTourismBinding
+import javax.inject.Inject
 
 class DetailTourismActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityDetailTourismBinding.inflate(layoutInflater) }
-    private var detailTourismViewModel: DetailTourismViewModel? = null
+
+    @Inject
+    lateinit var factory: ViewModelFactory
+
+    private val detailTourismViewModel: DetailTourismViewModel by viewModels {
+        factory
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        (application as MyApplication).appComponent.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
         setSupportActionBar(binding.toolbar)
         getBundleData()
-        initViewModel()
     }
 
     private fun getBundleData() {
         val detailTourism = intent.getParcelableExtra<Tourism>(EXTRA_DATA)
         showDetailTourism(detailTourism)
-    }
-
-    private fun initViewModel() {
-        val factory = ViewModelFactory.getInstance(this)
-        detailTourismViewModel = ViewModelProvider(this, factory)[DetailTourismViewModel::class.java]
     }
 
     private fun showDetailTourism(detailTourism: Tourism?) {
@@ -45,7 +48,7 @@ class DetailTourismActivity : AppCompatActivity() {
                 setStatusFavorite(statusFavorite)
                 fab.setOnClickListener {
                     statusFavorite = !statusFavorite
-                    detailTourismViewModel?.setFavoriteTourism(tourism, statusFavorite)
+                    detailTourismViewModel.setFavoriteTourism(tourism, statusFavorite)
                     setStatusFavorite(statusFavorite)
                 }
             }
