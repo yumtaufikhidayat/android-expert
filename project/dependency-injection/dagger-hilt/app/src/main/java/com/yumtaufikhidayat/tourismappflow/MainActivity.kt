@@ -11,7 +11,9 @@ import com.yumtaufikhidayat.tourismappflow.core.utils.showToast
 import com.yumtaufikhidayat.tourismappflow.databinding.ActivityMainBinding
 import com.yumtaufikhidayat.tourismappflow.favorite.FavoriteFragment
 import com.yumtaufikhidayat.tourismappflow.home.HomeFragment
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }

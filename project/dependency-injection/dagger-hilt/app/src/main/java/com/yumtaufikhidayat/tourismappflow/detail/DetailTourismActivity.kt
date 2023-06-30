@@ -4,27 +4,19 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.yumtaufikhidayat.tourismappflow.MyApplication
 import com.yumtaufikhidayat.tourismappflow.R
 import com.yumtaufikhidayat.tourismappflow.core.domain.model.Tourism
-import com.yumtaufikhidayat.tourismappflow.core.ui.ViewModelFactory
 import com.yumtaufikhidayat.tourismappflow.core.utils.loadImage
 import com.yumtaufikhidayat.tourismappflow.databinding.ActivityDetailTourismBinding
-import javax.inject.Inject
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DetailTourismActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityDetailTourismBinding.inflate(layoutInflater) }
-
-    @Inject
-    lateinit var factory: ViewModelFactory
-
-    private val detailTourismViewModel: DetailTourismViewModel by viewModels {
-        factory
-    }
+    private val detailTourismViewModel: DetailTourismViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        (application as MyApplication).appComponent.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
