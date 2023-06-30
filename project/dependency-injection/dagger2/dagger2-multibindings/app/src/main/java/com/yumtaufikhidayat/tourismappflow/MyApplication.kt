@@ -4,6 +4,7 @@ import android.app.Application
 import com.yumtaufikhidayat.tourismappflow.core.di.CoreComponent
 import com.yumtaufikhidayat.tourismappflow.core.di.DaggerCoreComponent
 import com.yumtaufikhidayat.tourismappflow.di.AppComponent
+import com.yumtaufikhidayat.tourismappflow.di.DaggerAppComponent
 
 open class MyApplication : Application() {
     private val coreComponent: CoreComponent by lazy {
@@ -11,6 +12,6 @@ open class MyApplication : Application() {
     }
 
     val appComponent: AppComponent by lazy {
-        DaggerCoreComponent.factory().create(coreComponent)
+        DaggerAppComponent.factory().create(coreComponent)
     }
 }
