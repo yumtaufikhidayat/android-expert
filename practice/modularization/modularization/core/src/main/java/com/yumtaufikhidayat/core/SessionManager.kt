@@ -1,4 +1,4 @@
-package com.yumtaufikhidayat.simplelogin
+package com.yumtaufikhidayat.core
 
 import android.content.Context
 import android.content.SharedPreferences

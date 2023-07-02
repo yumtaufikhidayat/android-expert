@@ -1,4 +1,4 @@
-package com.yumtaufikhidayat.simplelogin
+package com.yumtaufikhidayat.core
 
 class UserRepository(private val session: SessionManager) {
 

@@ -8,14 +8,14 @@ import com.yumtaufikhidayat.simplelogin.databinding.ActivityHomeBinding
 class HomeActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityHomeBinding.inflate(layoutInflater) }
-    private var userRepository: UserRepository? = null
+    private var userRepository: com.yumtaufikhidayat.core.UserRepository? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        val session = SessionManager(this)
-        userRepository = UserRepository.getInstance(session)
+        val session = com.yumtaufikhidayat.core.SessionManager(this)
+        userRepository = com.yumtaufikhidayat.core.UserRepository.getInstance(session)
 
         binding.tvWelcome.text = String.format("%s %s", "Welcome", "${userRepository?.getUser()}")
 
