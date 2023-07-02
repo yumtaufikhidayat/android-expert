@@ -1,8 +1,8 @@
 package com.yumtaufikhidayat.tourismappkoin.detail
 
 import androidx.lifecycle.ViewModel
-import com.yumtaufikhidayat.tourismappkoin.core.domain.model.Tourism
-import com.yumtaufikhidayat.tourismappkoin.core.domain.usecase.TourismUseCase
+import com.yumtaufikhidayat.tourismapp.core.domain.model.Tourism
+import com.yumtaufikhidayat.tourismapp.core.domain.usecase.TourismUseCase
 
 class DetailTourismViewModel(
     private val tourismUseCase: TourismUseCase

@@ -7,9 +7,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.navigation.NavigationView
+import com.yumtaufikhidayat.tourismapp.core.utils.showToast
 import com.yumtaufikhidayat.tourismappflow.R
 import com.yumtaufikhidayat.tourismappflow.databinding.ActivityMainBinding
-import com.yumtaufikhidayat.tourismappkoin.core.utils.showToast
 import com.yumtaufikhidayat.tourismappkoin.favorite.FavoriteFragment
 import com.yumtaufikhidayat.tourismappkoin.home.HomeFragment
 

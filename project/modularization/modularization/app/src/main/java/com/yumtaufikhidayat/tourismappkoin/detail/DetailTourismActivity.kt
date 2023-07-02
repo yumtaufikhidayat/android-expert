@@ -3,10 +3,10 @@ package com.yumtaufikhidayat.tourismappkoin.detail
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.yumtaufikhidayat.tourismapp.core.domain.model.Tourism
+import com.yumtaufikhidayat.tourismapp.core.utils.loadImage
 import com.yumtaufikhidayat.tourismappflow.R
 import com.yumtaufikhidayat.tourismappflow.databinding.ActivityDetailTourismBinding
-import com.yumtaufikhidayat.tourismappkoin.core.domain.model.Tourism
-import com.yumtaufikhidayat.tourismappkoin.core.utils.loadImage
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailTourismActivity : AppCompatActivity() {

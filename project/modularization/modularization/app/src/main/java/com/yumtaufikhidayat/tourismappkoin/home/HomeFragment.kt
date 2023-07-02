@@ -1,5 +1,6 @@
 package com.yumtaufikhidayat.tourismappkoin.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,11 +8,12 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.yumtaufikhidayat.tourismapp.core.data.Resource
+import com.yumtaufikhidayat.tourismapp.core.domain.model.Tourism
+import com.yumtaufikhidayat.tourismapp.core.ui.TourismAdapter
 import com.yumtaufikhidayat.tourismappflow.R
 import com.yumtaufikhidayat.tourismappflow.databinding.FragmentHomeBinding
-import com.yumtaufikhidayat.tourismappkoin.core.data.Resource
-import com.yumtaufikhidayat.tourismappkoin.core.ui.TourismAdapter
-import com.yumtaufikhidayat.tourismappkoin.core.utils.navigateToDetail
+import com.yumtaufikhidayat.tourismappkoin.detail.DetailTourismActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
@@ -69,6 +71,12 @@ class HomeFragment : Fragment() {
 
     private fun showProgressBar(isShow: Boolean) {
         binding.progressBar.isVisible = isShow
+    }
+
+    private fun navigateToDetail(data: Tourism) {
+        val intent = Intent(requireContext(), DetailTourismActivity::class.java)
+        intent.putExtra(DetailTourismActivity.EXTRA_DATA, data)
+        this.startActivity(intent)
     }
 
     override fun onDestroyView() {

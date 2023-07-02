@@ -1,9 +1,9 @@
 package com.yumtaufikhidayat.tourismappkoin
 
 import android.app.Application
-import com.yumtaufikhidayat.tourismappkoin.core.di.databaseModule
-import com.yumtaufikhidayat.tourismappkoin.core.di.networkModule
-import com.yumtaufikhidayat.tourismappkoin.core.di.repositoryModule
+import com.yumtaufikhidayat.tourismapp.core.di.databaseModule
+import com.yumtaufikhidayat.tourismapp.core.di.networkModule
+import com.yumtaufikhidayat.tourismapp.core.di.repositoryModule
 import com.yumtaufikhidayat.tourismappkoin.di.useCaseModule
 import com.yumtaufikhidayat.tourismappkoin.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
