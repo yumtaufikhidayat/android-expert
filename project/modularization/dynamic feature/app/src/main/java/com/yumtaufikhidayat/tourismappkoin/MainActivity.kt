@@ -1,5 +1,7 @@
 package com.yumtaufikhidayat.tourismappkoin
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -7,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.navigation.NavigationView
-import com.yumtaufikhidayat.tourismapp.core.utils.showToast
 import com.yumtaufikhidayat.tourismappflow.R
 import com.yumtaufikhidayat.tourismappflow.databinding.ActivityMainBinding
 import com.yumtaufikhidayat.tourismappkoin.favorite.FavoriteFragment
@@ -62,7 +63,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     fragment = FavoriteFragment()
                     title = getString(R.string.menu_favorite)
                 }
-                R.id.nav_map -> showToast(this@MainActivity, "Coming Soon")
+                R.id.nav_map -> {
+                    val uri = Uri.parse("tourismapp://maps")
+                    startActivity(Intent(Intent.ACTION_VIEW, uri))
+                }
             }
 
             if (fragment != null) {
