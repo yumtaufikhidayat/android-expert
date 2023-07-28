@@ -61,7 +61,7 @@ dependencies {
     api "androidx.lifecycle:lifecycle-livedata-ktx:2.6.1"
 
     //sql cipher
-    def sqlCipherVersion = '4.4.42'
+    def sqlCipherVersion = '4.4.2'
     def sqliteKtxVersion = '2.3.1'
     implementation "net.zetetic:android-database-sqlcipher:$sqlCipherVersion"
     implementation "androidx.sqlite:sqlite-ktx:$sqliteKtxVersion"
