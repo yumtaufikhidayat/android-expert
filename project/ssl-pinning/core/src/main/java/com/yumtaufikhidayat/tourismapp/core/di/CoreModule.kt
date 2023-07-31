@@ -8,6 +8,7 @@ import com.yumtaufikhidayat.tourismapp.core.domain.repository.ITourismRepository
 import com.yumtaufikhidayat.tourismapp.core.utils.AppExecutors
 import net.sqlcipher.database.SQLiteDatabase
 import net.sqlcipher.database.SupportFactory
+import okhttp3.CertificatePinner
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidContext
@@ -32,10 +33,16 @@ val databaseModule = module {
 
 val networkModule = module {
     single {
+        val hostname = "tourism-api.dicoding.dev"
+        val certificatePinner = CertificatePinner.Builder()
+            .add(hostname, "sha256/0BFUiL2XBR0AUiH9cwvtU7vw+erNN1BIHCGPBI4QC9U=")
+            .build()
+
         OkHttpClient.Builder()
             .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
             .connectTimeout(120, TimeUnit.SECONDS)
             .readTimeout(120, TimeUnit.SECONDS)
+            .certificatePinner(certificatePinner)
             .build()
     }
 
