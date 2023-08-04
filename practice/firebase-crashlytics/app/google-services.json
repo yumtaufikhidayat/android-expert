@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "691210955566",
+    "project_id": "my-report-app-395fe",
+    "storage_bucket": "my-report-app-395fe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:691210955566:android:ab41be3270bf9d6cb0e8bf",
+        "android_client_info": {
+          "package_name": "com.yumtaufikhidayat.myreportapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "691210955566-a69dfin51o7f7h1kvv40a1kbeeie3auq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0qu6QT2my5mDA6l3BV2BRpcwA42k2mhA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "691210955566-a69dfin51o7f7h1kvv40a1kbeeie3auq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
