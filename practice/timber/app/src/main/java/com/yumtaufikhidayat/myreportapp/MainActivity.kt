@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.yumtaufikhidayat.myreportapp.databinding.ActivityMainBinding
+import timber.log.Timber
 import java.lang.RuntimeException
 
 class MainActivity : AppCompatActivity() {
@@ -18,11 +19,16 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun makeCrash() {
+        Timber.d("Test Timber Debugging")
         val crashlyticsInstance = FirebaseCrashlytics.getInstance()
         binding.btnCrash.setOnClickListener {
             crashlyticsInstance.log("Clicked on button.")
             crashlyticsInstance.setCustomKey("str_key", "some_data")
-            throw RuntimeException("Test Crash")
+            try {
+                throw RuntimeException("Test Crash")
+            } catch (ex: Exception) {
+                Timber.e("Test non fatal exception: $ex")
+            }
         }
     }
 }
