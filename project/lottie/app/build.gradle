@@ -43,4 +43,7 @@ android {
 dependencies {
     implementation project(":core")
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    // Lottie
+    implementation "com.airbnb.android:lottie:6.0.0"
 }
